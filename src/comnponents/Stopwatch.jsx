@@ -1,34 +1,35 @@
 import "./stopwatch.css";
 
 const Stopwatch = () => {
-  let hour =0, min= 0, sec=0;
+  let hour = 0,
+    min = 0,
+    sec = 0;
   let timer;
-  const counter =()=>{
-   timer = setInterval((x)=>{
-    sec++
-    if (sec < 10){
-    document.getElementById("sec").innerText = "0"+sec
-
-    }else{
-      document.getElementById("sec").innerText = sec
-    }
-    if (sec === 99){
-      sec = 0;
-      min++
-      if (min < 10){
-        document.getElementById("min").innerText = "0" + min
-      }else {
-        document.getElementById("min").innerText = min
+  const counter = () => {
+    timer = setInterval((x) => {
+      sec++;
+      if (sec < 10) {
+        document.getElementById("sec").innerText = "0" + sec;
+      } else {
+        document.getElementById("sec").innerText = sec;
       }
-      sec = 0
-    }else if (min > 59){
-      hour++
-      document.getElementById("hour").innerText = "0"+ hour
-      min = -1
-    }
-  },9.99999)}
-    
-  
+      if (sec === 99) {
+        sec = 0;
+        min++;
+        if (min < 10) {
+          document.getElementById("min").innerText = "0" + min;
+        } else {
+          document.getElementById("min").innerText = min;
+        }
+        sec = 0;
+      } else if (min > 59) {
+        hour++;
+        document.getElementById("hour").innerText = "0" + hour;
+        min = -1;
+      }
+    }, 9.9);
+  };
+
   return (
     <div>
       <h2 className="watch">
@@ -39,27 +40,32 @@ const Stopwatch = () => {
         className="fa-solid fa-play"
         onClick={(e) => {
           if (e.target.classList.contains("fa-play")) {
-            counter()
+            counter();
             e.target.classList.value = "fa-solid fa-pause";
           } else if (e.target.classList.contains("fa-pause")) {
-            clearInterval(timer)
+            clearInterval(timer);
             e.target.classList.value = "fa-solid fa-play";
           }
         }}
-        ></i>
-      <i className="fa-solid fa-stop" onClick={(e) => {
-        // eslint-disable-next-line eqeqeq
-        if(document.querySelector(".fa-solid fa-pause") != '<i className="fa-solid fa-play")></i>'){
-          document.querySelector(".fa-solid").className = "fa-solid fa-play"
-        }
-        clearInterval(timer)
-        min = 0
-        sec = 0
-        hour = 0
-        document.getElementById("hour").innerText = "00"
-        document.getElementById("min").innerText = "00"
-        document.getElementById("sec").innerText = "00"
-      }}></i>
+      ></i>
+      <i
+        className="fa-solid fa-stop"
+        onClick={(e) => {
+          if (
+            document.querySelector(".fa-solid fa-pause") !==
+            '<i className="fa-solid fa-play")></i>'
+          ) {
+            document.querySelector(".fa-solid").className = "fa-solid fa-play";
+          }
+          clearInterval(timer);
+          min = 0;
+          sec = 0;
+          hour = 0;
+          document.getElementById("hour").innerText = "00";
+          document.getElementById("min").innerText = "00";
+          document.getElementById("sec").innerText = "00";
+        }}
+      ></i>
     </div>
   );
 };
