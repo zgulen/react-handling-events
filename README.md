@@ -1,3 +1,3 @@
-[Project View](stop-watch-chl.netlify.app "Try it")
+[Project View](https://stop-watch-chl.netlify.app/)
 
-! [](./stopwatch.gif)
+![](./stopwatch.gif)
