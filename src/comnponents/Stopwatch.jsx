@@ -21,13 +21,12 @@ const Stopwatch = () => {
         document.getElementById("min").innerText = min
       }
       sec = 0
-      
-    }else if (min === 9){
+    }else if (min > 59){
       hour++
       document.getElementById("hour").innerText = "0"+ hour
       min = -1
     }
-  },9)}
+  },9.99999)}
     
   
   return (
