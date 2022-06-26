@@ -25,7 +25,7 @@ const Stopwatch = () => {
     }else if (min === 9){
       hour++
       document.getElementById("hour").innerText = "0"+ hour
-      min = 0
+      min = -1
     }
   },9)}
     
