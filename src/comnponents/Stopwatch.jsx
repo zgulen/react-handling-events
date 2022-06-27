@@ -1,10 +1,16 @@
+/* eslint-disable no-undef */
 import "./stopwatch.css";
+import React, { createElement } from "react";
 
 const Stopwatch = () => {
   let hour = 0,
     min = 0,
     sec = 0;
   let timer;
+  let dakika = [],
+    saniye = [],
+    salise = [];
+  let sayac = 0;
   const counter = () => {
     timer = setInterval((x) => {
       sec++;
@@ -41,6 +47,7 @@ const Stopwatch = () => {
         onClick={(e) => {
           if (e.target.classList.contains("fa-play")) {
             counter();
+
             e.target.classList.value = "fa-solid fa-pause";
           } else if (e.target.classList.contains("fa-pause")) {
             clearInterval(timer);
@@ -66,6 +73,27 @@ const Stopwatch = () => {
           document.getElementById("sec").innerText = "00";
         }}
       ></i>
+
+      <i
+        className="fa-solid fa-flag-checkered"
+        onClick={() => {
+          dakika.push(document.getElementById("hour").innerText);
+          saniye.push(document.getElementById("min").innerText);
+          salise.push(document.getElementById("sec").innerText);
+          document.getElementById("dakika").innerText = dakika[sayac];
+          document.getElementById("saniye").innerText = saniye[sayac];
+          document.getElementById("salise").innerText = salise[sayac];
+          console.log(typeof x);
+          document.querySelector(".capture").style.display = "block"
+          sayac++;
+        }}
+      ></i>
+      <div className="capture">
+        <h3 className="flag">
+          <span id="dakika"></span>:<span id="saniye"></span>:
+          <span id="salise"></span>
+        </h3>
+      </div>
     </div>
   );
 };
